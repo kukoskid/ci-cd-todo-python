@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Todo App</title>
+</head>
+<body>
+  <h1>Todo App</h1>
+  <button onclick="loadTodos()">Load Todos</button>
+  <ul id="list"></ul>
+
+  <script>
+    async function loadTodos() {
+const res = await fetch("http://127.0.0.1:65000/todos");
+      const data = await res.json();
+      document.getElementById("list").innerHTML =
+        data.map(t => `<li>${t}</li>`).join("");
+    }
+  </script>
+</body>
+</html>
+
